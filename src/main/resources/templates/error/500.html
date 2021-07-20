@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+  <!--共通Header-->
+  <head th:replace="common/css_common :: css_common"></head>
+  <!--個別Header-->
+  <head>
+     <title>500</title>
+  </head>
+  <body>
+    <main class="container-md px-0">
+      <center>
+      		<br>
+	      	<div id="msg" style="color:red;">
+	      		<h2>WEBページを表示できません</h2>
+	      		システムエラーが発生しており、正常に処理が行えませんでした。<br>
+	      		恐れ入りますが、しばらく時間をおいてから、「戻る」ボタンよりお戻りください。
+	      	</div>
+	      	<br>
+		    <div style="width:150px">
+		   		<a class="btn btn-primary btn-block" href="/home" id="return">戻る</a>
+	   		</div>
+      </center>
+    </main>
+
+    <!-- フッター -->
+	<foot th:replace="common/foot"></foot>
+	<script th:replace="common/script_common"></script>
+  </body>
+</html>

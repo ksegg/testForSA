@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.LoginUserMapper">
+
+	<select id="getLoginUser" parameterType="String" resultType="User">
+		SELECT
+			*
+		FROM
+			m_users
+		WHERE
+			login_id = #{ login }
+	</select>
+	<update id="updateTrialNo" parameterType="String">
+		update m_users
+		set trial_no = trial_no + 1
+		where
+			login_id = #{ login }
+	</update>
+	<update id="clearTrialNo" parameterType="String">
+		update m_users
+		set trial_no = 0, remote_addr = #{remoteAddr}, last_login_at = CURRENT_TIMESTAMP
+		where
+			login_id =#{login}
+	</update>
+</mapper>

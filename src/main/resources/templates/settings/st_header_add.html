@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- CSS Files -->
+<head th:replace="common/css_common :: css_common"></head>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title></title>
+	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+</head>
+<body>
+	<div class="wrapper">
+		<div class="logo-header" data-background-color="blue">
+			<a href="home" class="logo">
+				<img th:src="@{/img/logo.svg}" alt="navbar brand" class="navbar-brand">
+			</a>
+			<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
+					data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon">
+						<i class="icon-menu"></i>
+					</span>
+			</button>
+			<button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+			<div class="nav-toggle">
+				<button class="btn btn-toggle toggle-sidebar">
+					<i class="icon-menu"></i>
+				</button>
+			</div>
+		</div>
+		<div th:replace="_fragmentSettingHeader :: _fragmentSettingHeader"></div>
+
+		<!-- Sidebar -->
+		<div th:replace="_fragmentSidebar :: _fragmentSidebar"></div>
+		<!-- End Sidebar -->
+
+		<div class="main-panel">
+			<div class="content">
+				<div class="page-inner">
+					<div class="page-header">
+						<ul class="breadcrumbs" style="margin-left: 0px; border-left: none;">
+							<li class="nav-home">
+								<a href="#">
+									<i class="flaticon-settings"></i>
+								</a>
+							</li>
+							<li class="separator">
+								<i class="flaticon-right-arrow"></i>
+							</li>
+							<li class="nav-item">
+								<a href="#">Global Header</a>
+							</li>
+							<li class="separator">
+								<i class="flaticon-right-arrow"></i>
+							</li>
+							<li class="nav-item">
+								<a href="#">add</a>
+							</li>
+						</ul>
+					</div>
+					<div class="page-category">
+						<table>
+							<tr th:if="${validationError}" th:each="error : ${validationError}">
+								<td style="color:red;" th:text="${error}"></td>
+							</tr>
+						</table>
+						<form th:action="@{/stHeader/create}" th:object="${stHeaderVo}" th:method="post">
+							<table th:replace="settings/_st_header :: _st_header"></table>
+							<div class="btn_area_center" style="text-align: center;">
+								<input type="submit" class="btn btn-primary btn-block" style="width: 200px;display:inline-block;" value="Add" ><p style="width: 100px;display:inline-block;"></p>
+								<a href="/stHeader"><input type="button" class="btn btn-primary btn-block" style="width: 200px;display:inline-block;" value="Cancel"></a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- フッター -->
+			<foot th:replace="common/foot"></foot>
+			<script th:replace="common/script_common"></script>
+
+		</div>
+		
+	</div>
+</body>
+</html>

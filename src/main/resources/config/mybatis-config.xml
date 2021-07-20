@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 全局MapperのCasheを使用 -->
+		<setting name="cacheEnabled" value="true" />
+		<!-- Sets the number of seconds the driver will wait for a response from 
+			the database -->
+		<setting name="defaultStatementTimeout" value="3000" />
+		<!-- ネーミングルール：Camelを使用 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<!--PK 自動インクリメント -->
+		<setting name="useGeneratedKeys" value="false" />
+		<!-- 列名の代わりに列ラベルを使用します。 -->
+		<setting name="useColumnLabel" value="true" />
+		<!-- Lazy Loading（遅延読み込み）の有効／無効を切り替えるグローバルな設定です -->
+		<setting name="lazyLoadingEnabled" value="true" />
+	</settings>
+	<!--よく使くJava タイプに対する短縮名です -->
+	<typeAliases>
+		<typeAlias alias="String" type="java.lang.String" />
+		<typeAlias alias="Integer" type="java.lang.Integer" />
+		<typeAlias alias="Long" type="java.lang.Long" />
+		<typeAlias alias="HashMap" type="java.util.HashMap" />
+		<typeAlias alias="LinkedHashMap" type="java.util.LinkedHashMap" />
+		<typeAlias alias="ArrayList" type="java.util.ArrayList" />
+		<typeAlias alias="LinkedList" type="java.util.LinkedList" />
+		
+		<!-- 業務用略称 -->
+		<typeAlias alias="User" type="com.example.entity.User" />
+		<typeAlias alias="StHeader" type="com.example.entity.StHeader" />
+		
+	</typeAliases>
+</configuration>

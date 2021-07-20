@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.SettingMapper">
+
+	<select id="getStHeaders" parameterType="String" resultType="StHeader">
+		SELECT
+			*
+		FROM
+			st_headers
+		ORDER BY id;
+	</select>
+	<insert id="addStHeader" parameterType="StHeader" >
+		INSERT INTO st_headers
+		(
+			col_left,
+			col_center,
+			col_right,
+			created_by,
+			created_at,
+			updated_by,
+			updated_at
+		)
+		values
+		(
+			#{colLeft},
+			#{colCenter},
+			#{colRight},
+			#{createdBy},
+			CURRENT_TIMESTAMP,
+			#{updatedBy},
+			CURRENT_TIMESTAMP
+		)
+	</insert>
+
+	<select id="findStHeaderById" parameterType="Long" resultType="StHeader">
+		SELECT
+			*
+		FROM
+			st_headers
+		WHERE id = #{id}
+	</select>
+
+	<update id="updateStHeader" parameterType="StHeader" >
+		update
+			st_headers
+		set
+			col_left=#{colLeft},
+			col_center=#{colCenter},
+			col_right=#{colRight},
+			updated_by=#{updatedBy},
+			updated_at=CURRENT_TIMESTAMP
+		where
+			id=#{id}
+	</update>
+
+	<delete id="deleteStHeaderById" parameterType="Long">
+		Delete
+		FROM
+			st_headers
+		WHERE id = #{id}
+	</delete>
+</mapper>

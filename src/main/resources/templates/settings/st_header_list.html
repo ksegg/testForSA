@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- CSS Files -->
+<head th:replace="common/css_common :: css_common"></head>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title></title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'/>
+</head>
+<body>
+<div class="wrapper">
+    <div class="logo-header" data-background-color="blue">
+        <a href="home" class="logo">
+            <img th:src="@{/img/logo.svg}" alt="navbar brand" class="navbar-brand">
+        </a>
+        <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
+                data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon">
+						<i class="icon-menu"></i>
+					</span>
+        </button>
+        <button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+        <div class="nav-toggle">
+            <button class="btn btn-toggle toggle-sidebar">
+                <i class="icon-menu"></i>
+            </button>
+        </div>
+    </div>
+    <div th:replace="_fragmentSettingHeader :: _fragmentSettingHeader"></div>
+
+    <!-- Sidebar -->
+    <div th:replace="_fragmentSidebar :: _fragmentSidebar"></div>
+    <!-- End Sidebar -->
+
+    <div class="main-panel">
+        <div class="content">
+            <div class="page-inner">
+                <div class="page-header">
+                    <ul class="breadcrumbs" style="margin-left: 0px; border-left: none;">
+                        <li class="nav-home">
+                            <a href="#">
+                                <i class="flaticon-settings"></i>
+                            </a>
+                        </li>
+                        <li class="separator">
+                            <i class="flaticon-right-arrow"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">Global Header</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="page-category">
+                    <table class="table table-hover table-bordered ">
+                        <thead class="thead-light">
+                        <tr>
+                            <th width="5%">ID</th>
+                            <th width="25%" style="text-align: left;">Left</th>
+                            <th width="25%" style="text-align: center;">Center</th>
+                            <th width="25%" style="text-align: right;">Right</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="stHeader : ${stHeaderList}" th:object="${stHeader}">
+                            <td th:text="*{id}"></td>
+                            <td th:text="*{colLeft}" style="text-align: left;"></td>
+                            <td th:text="*{colCenter}" style="text-align: center;"></td>
+                            <td class="center" th:text="*{colRight}" style="text-align: right;"></td>
+                            <td class="center" style="text-align: center">
+                                <a th:href="@{/stHeader/{id}(id=*{id})}">Detial </a>&nbsp;&nbsp;&nbsp;
+                                <a th:href="@{/stHeader/{id}/delete(id=*{id})}" th:onclick="javascript:return confirm('Want to delete?')">Delete </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+				<div class="btn_area_center" style="text-align: center;">
+					<a th:href="@{/stHeader/add}"><input type="button" class="btn btn-primary btn-block" style="width: 200px;display:inline-block;" value="Add"></a>
+				</div>
+            </div>
+        </div>
+        <!-- フッター -->
+        <foot th:replace="common/foot"></foot>
+        <script th:replace="common/script_common"></script>
+
+    </div>
+
+</div>
+</body>
+</html>

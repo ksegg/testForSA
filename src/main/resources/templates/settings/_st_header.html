@@ -1,0 +1,16 @@
+<table class="table table-hover table-bordered" th:fragment="_st_header">
+  <thead>
+  <tr>
+    <th width="33%" style="text-align: left;">Left</th>
+    <th width="33%" style="text-align: center;">Center</th>
+    <th style="text-align: right;">Right</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><input type="text" th:field="*{colLeft}" style="width: 100%;text-align: left"></td>
+    <td><input type="text" th:field="*{colCenter}" style="width: 100%;text-align: center;"></td>
+    <td><input type="text" th:field="*{colRight}" style="width: 100%;text-align: right;"></td>
+  </tr>
+  </tbody>
+</table>
